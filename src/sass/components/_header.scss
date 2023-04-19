@@ -1,0 +1,26 @@
+header {
+	padding: 0.8rem 1rem;
+	background: $info;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	.logo {
+		display: flex;
+		align-items: center;
+		margin: 0;
+		padding: 0;
+		width: 30rem;
+		img {
+			width: 100%;
+		}
+	}
+	.logo__decription {
+		p {
+			margin: 0;
+			padding: 0;
+			font-size: 1.2rem;
+			text-align: justify;
+			color: white;
+		}
+	}
+}

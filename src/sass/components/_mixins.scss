@@ -1,0 +1,3 @@
+@mixin mixin-bnt($property, $btn-value) {
+	#{$property}: $btn-value;
+}
