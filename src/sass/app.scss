@@ -11,9 +11,9 @@ html {
 	box-sizing: inherit;
 }
 .container {
-	max-width: 1200px;
 	margin: 0 auto;
-	width: 95%;
+	width: 90%;
+	margin-bottom: 2rem;
 }
 .hero {
 	position: relative;
@@ -27,9 +27,15 @@ html {
 		position: relative;
 		overflow: hidden;
 		video {
-			position: absolute;
-			/* bottom: 10px; */
+			/* 	position: absolute; */
+			bottom: 10px;
 			width: 100%;
+			@media (max-width: 768px) {
+				position: absolute;
+				width: unset;
+				bottom: -846px;
+				right: -1189px;
+			}
 		}
 	}
 	.hero-text {
@@ -57,7 +63,49 @@ html {
 		opacity: 0.5;
 	}
 }
-
+.grid__layout {
+	display: grid;
+	/* grid-auto-rows: 25rem; */
+	gap: 1.5rem;
+	grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+	margin: 0 auto;
+}
+.categoria__flex {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	margin: 0 1rem;
+}
+.search__seccion {
+	display: flex;
+	flex-direction: column;
+}
+.flex {
+	display: flex;
+	margin: 1rem 0;
+	h3 {
+		margin: 0;
+	}
+}
+.search {
+	margin: 1rem 0;
+	display: flex;
+	input {
+		width: 100%;
+		margin: 0 0.8rem;
+		padding: 0 0.5rem;
+		/* 		border: none;
+ */
+		outline: none;
+		background: #cacaca;
+		border-radius: 0.5rem;
+		/* box-shadow: $sombra; */
+		border: 2px solid $info;
+	}
+}
 @import './components/header';
+@import './components/footer';
 @import './components/mixins';
 @import './components/button';
+@import './components/recetas';
+@import './components/card';
