@@ -23,7 +23,9 @@ function App() {
 						recetas están diseñadas para que disfrutes de la cocina en
 						casa al máximo. ¡Comienza a explorar ahora!
 					</p>
-					<button className='btn'>Ver Recetas</button>
+					<a className='btn' href='#todaslasrecetas'>
+						Ver Recetas
+					</a>
 				</div>
 				<div className='hero-bg'></div>
 			</section>
@@ -70,7 +72,7 @@ function App() {
 					<div className='flex'>
 						<h3>Tiempo:</h3>
 
-						{tiempo.map((tiempo) => (
+						{tiempo.map((tiempo, index) => (
 							<div className='categoria__flex'>
 								<input
 									type='checkbox'

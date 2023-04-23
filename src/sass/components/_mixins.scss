@@ -1,3 +1,42 @@
 @mixin mixin-bnt($property, $btn-value) {
 	#{$property}: $btn-value;
 }
+
+@mixin mixin-chat($property, $chat-value) {
+	#{$property}: $chat-value;
+	/* display: none; */
+	z-index: 999999;
+	background: $white;
+	box-shadow: $sombra;
+	position: fixed;
+	border-radius: 1rem;
+	text-align: center;
+	padding: 1rem;
+	font-weight: $font-bold;
+	bottom: 7.5rem;
+	/* right: 2.2rem; */
+	/* right: -50%; */
+	font-family: $poppins;
+	transition: 0.3s ease all;
+
+	&:before {
+		border: 25px solid $white;
+		content: '';
+		border-left-color: transparent;
+		border-bottom-color: transparent;
+		border-right-color: transparent;
+		position: absolute;
+		bottom: -39px;
+		right: 0;
+	}
+
+	h3 {
+		font-size: 2rem;
+		margin: 0 0.5rem;
+		padding: 0;
+	}
+	p {
+		margin: 0;
+		padding: 0;
+	}
+}

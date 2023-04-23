@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 export const recetas = [
 	{
 		id: uuidv4(),
-		nombre: 'Deliciosa ensalada de pollo y aguacate',
+		nombre: 'Deliciosa ensalada de pollo con brocoli',
 		descripcion:
 			'Sabrosa mezcla de lechugas frescas, pollo a la parrilla, aguacate y crujientes trozos de tocino, aderezada con una vinagreta de mostaza y miel. Perfecta como comida ligera o para una cena rápida y saludable. ¡Prueba esta ensalada única y sorprendente!',
 		imagen:
@@ -93,20 +93,20 @@ export const recetas = [
 	},
 	{
 		id: uuidv4(),
-		nombre: 'Dieta mediterranea',
+		nombre: 'Paella de mariscos y ostras',
 		descripcion:
 			'Disfruta de una deliciosa y saludable ensalada mediterránea de quinoa y garbanzos con esta fácil receta. Rica en proteínas, fibra y grasas saludables, esta ensalada es una excelente opción para aquellos que buscan una dieta equilibrada y nutritiva.',
 		imagen:
-			'https://images.pexels.com/photos/3186654/pexels-photo-3186654.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+			'https://images.pexels.com/photos/4305836/pexels-photo-4305836.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 		url: '',
 	},
 	{
 		id: uuidv4(),
-		nombre: 'Dieta mediterranea',
+		nombre: 'Patatas Hasselback',
 		descripcion:
 			'Disfruta de una deliciosa y saludable ensalada mediterránea de quinoa y garbanzos con esta fácil receta. Rica en proteínas, fibra y grasas saludables, esta ensalada es una excelente opción para aquellos que buscan una dieta equilibrada y nutritiva.',
 		imagen:
-			'https://images.pexels.com/photos/3186654/pexels-photo-3186654.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+			'https://images.pexels.com/photos/15490120/pexels-photo-15490120.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 		url: '',
 	},
 ];
