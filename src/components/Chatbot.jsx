@@ -21,10 +21,10 @@ const Chatbot = () => {
 	useEffect(() => {
 		setTimeout(() => {
 			setChat(true);
-		}, 10000);
+		}, 20000);
 		setTimeout(() => {
 			setChat(false);
-		}, 80000);
+		}, 100000);
 	}, []);
 	const openChat = () => {
 		setChat(!chat);
@@ -50,7 +50,7 @@ const Chatbot = () => {
 		setIsLoader(true);
 
 		const { data } = await axios.post(
-			'http://localhost:8080/sendPrompt',
+			'http://localhost:3001/sendPrompt',
 			{
 				userPrompt: busqueda.receta,
 			}
@@ -61,7 +61,7 @@ const Chatbot = () => {
 				cambiarEstadoModal1(!estadoModal1);
 				setChat(false);
 				setBot(false);
-			}, 2000);
+			}, 3100);
 		}
 	};
 

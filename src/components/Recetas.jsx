@@ -7,7 +7,7 @@ const Recetas = () => {
 	const [recetas, setRecetas] = useState([]);
 	const [busqueda, setBusqueda] = useState(null);
 	const getRecetas = async () => {
-		const { data } = await axios.get('http://localhost:8080/recetas');
+		const { data } = await axios.get('http://localhost:3001/recetas');
 		setRecetas(data);
 	};
 	useEffect(() => {
