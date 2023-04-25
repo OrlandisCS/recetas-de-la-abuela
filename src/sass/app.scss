@@ -1,19 +1,25 @@
 @import './components/variables';
+@import './components/mixins';
+
 /* apply a natural box layout model to all elements, but allowing components to change */
 html {
 	box-sizing: border-box;
 	font-family: $roboto;
 	font-size: 16px;
+	scroll-behavior: smooth;
 }
 *,
 *:before,
 *:after {
 	box-sizing: inherit;
 }
+a {
+	text-decoration: none;
+}
 .container {
-	max-width: 1200px;
 	margin: 0 auto;
-	width: 95%;
+	width: 90%;
+	margin-bottom: 2rem;
 }
 .hero {
 	position: relative;
@@ -27,9 +33,15 @@ html {
 		position: relative;
 		overflow: hidden;
 		video {
-			position: absolute;
-			/* bottom: 10px; */
+			/* 	position: absolute; */
+			bottom: 10px;
 			width: 100%;
+			@media (max-width: 768px) {
+				position: absolute;
+				width: unset;
+				bottom: -846px;
+				right: -1189px;
+			}
 		}
 	}
 	.hero-text {
@@ -57,7 +69,129 @@ html {
 		opacity: 0.5;
 	}
 }
+.grid__layout {
+	display: grid;
+	/* grid-auto-rows: 25rem; */
+	gap: 1.5rem;
+	grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+	margin: 0 auto;
+}
+.categoria__flex {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	margin: 0 1rem;
+}
+.search__seccion {
+	display: flex;
+	flex-direction: column;
+}
+.flex {
+	display: flex;
+	margin: 1rem 0;
+	h3 {
+		margin: 0;
+	}
+}
+.search {
+	margin: 1rem 0;
+	display: flex;
+	input {
+		width: 100%;
+		margin: 0 0.8rem;
+		padding: 0 0.5rem;
+		/* 		border: none;
+ */
+		outline: none;
+		background: #cacaca;
+		border-radius: 0.5rem;
+		/* box-shadow: $sombra; */
+		border: 2px solid $info;
+	}
+}
+.chatbot__container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	bottom: 1rem;
+	right: 1rem;
+	width: 5rem;
+	height: 5rem;
+	border-radius: 50%;
+	background: $white;
+	box-shadow: $sombra;
+	cursor: pointer;
+	border: none;
+	outline: none;
+	.rss__icon {
+		font-size: 3rem;
+		color: $info;
+	}
+}
+.container__float__chat {
+	@include mixin-chat(right, -50%);
+}
+.div__vacio {
+	width: 140px;
+	height: 140px;
+}
+.error__container {
+	font-weight: 400;
+	color: red;
+	position: absolute;
+	display: flex;
+	left: 2rem;
+	width: 100%;
+	p {
+		padding: 0;
+		margin: 0;
+	}
+}
+.btnClose {
+	position: absolute;
+	right: 0rem;
+	top: 0rem;
+	font-size: 2rem;
+	button {
+		border: none;
+		outline: none;
+		background: transparent;
+		padding: 0.8rem;
+		cursor: pointer;
+	}
+}
 
+.container__for__chat {
+	@include mixin-chat(right, -150%);
+	@include mixin-chat(width, 550px);
+	@include mixin-chat(height, 350px);
+	.loader__div {
+		img {
+			width: 140px;
+		}
+	}
+	h3 {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.search {
+		position: relative;
+		bottom: -2rem;
+	}
+}
+.otros__iconos {
+	font-size: 2rem;
+}
+.receta__parser {
+	font-family: $roboto;
+	font-size: 1.3rem;
+	font-weight: $font_medium;
+	line-height: 1.8rem;
+}
 @import './components/header';
-@import './components/mixins';
+@import './components/footer';
 @import './components/button';
+@import './components/recetas';
+@import './components/card';

@@ -1,0 +1,31 @@
+.card__cointainer {
+	background-color: $primary;
+	border-radius: 0.3rem;
+	box-shadow: $sombra;
+	.card__image {
+		width: 100%;
+		img {
+			width: 100%;
+		}
+	}
+	.card__header {
+		p {
+			font-size: 1.5rem;
+			color: $info;
+			text-align: center;
+			font-weight: $font-bold;
+		}
+	}
+	.card__body {
+		padding: 0 1.2rem;
+		color: #cacaca;
+		text-align: center;
+		font-size: 1.1rem;
+		font-weight: $font-bold;
+	}
+	.card__footer {
+		display: flex;
+		justify-content: center;
+		margin: 1rem auto;
+	}
+}
