@@ -148,22 +148,27 @@ export const tiempo = [
 	{
 		id: uuidv4(),
 		nombre: '15 Minutos',
+		value: 15,
 	},
 	{
 		id: uuidv4(),
 		nombre: '30 Minutos',
+		value: 30,
 	},
 	{
 		id: uuidv4(),
 		nombre: '45 Minutos',
+		value: 45,
 	},
 	{
 		id: uuidv4(),
 		nombre: '1 Hora',
+		value: 60,
 	},
 	{
 		id: uuidv4(),
 		nombre: '1+ Hora',
+		value: 75,
 	},
 ];
 export const ingredientes = [];

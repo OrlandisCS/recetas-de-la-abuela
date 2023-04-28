@@ -15,6 +15,7 @@ html {
 }
 a {
 	text-decoration: none;
+	color: $info;
 }
 .container {
 	margin: 0 auto;
@@ -87,10 +88,32 @@ a {
 	flex-direction: column;
 }
 .flex {
-	display: flex;
-	margin: 1rem 0;
-	h3 {
-		margin: 0;
+	@media (min-width: 768px) {
+		display: flex;
+		margin: 1rem 0;
+		h3 {
+			margin: 0;
+		}
+	}
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+}
+.width50 {
+	width: 50%;
+}
+.items-center {
+	align-items: center;
+}
+.justify-evenly {
+	justify-content: space-around;
+}
+.absolute {
+	position: absolute;
+	top: 3rem;
+	.card__image {
+		img {
+			position: relative;
+		}
 	}
 }
 .search {
@@ -166,6 +189,9 @@ a {
 	@include mixin-chat(right, -150%);
 	@include mixin-chat(width, 550px);
 	@include mixin-chat(height, 350px);
+	@media (max-width: 768px) {
+		@include mixin-chat(width, 100%);
+	}
 	.loader__div {
 		img {
 			width: 140px;

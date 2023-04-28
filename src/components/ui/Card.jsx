@@ -32,6 +32,22 @@ const Card = ({ nombre, descripcion, imagen, receta }) => {
 				padding={'20px'}
 			>
 				<Contenido>
+					<div className='card__image'>
+						<img src={imagen} alt={nombre} loading='lazy' />
+						<div className='flex items-center justify-evenly absolute width50'>
+							<p>Imagenes suministradas por: </p>
+							<a target='_blank' href='https://www.flickr.com/'>
+								Flickr
+							</a>
+							<a target='_blank' href='https://unsplash.com/es'>
+								unsplash
+							</a>
+							<a target='_blank' href='https://pixabay.com/'>
+								Pixabay
+							</a>
+						</div>
+					</div>
+
 					<div className='receta__parser'>
 						{ReactHtmlParser(htmlConvert)}
 					</div>

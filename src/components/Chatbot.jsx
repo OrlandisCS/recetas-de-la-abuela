@@ -9,15 +9,29 @@ import Usuario from '../assets/usuario.gif';
 import Modal, { Boton, Contenido } from './ui/Modal';
 
 import ReactHtmlParser from 'react-html-parser';
+import { useContext } from 'react';
+import { DataContext } from '../context/DataContext';
 
 const Chatbot = () => {
-	const [chat, setChat] = useState(false);
-	const [bot, setBot] = useState(false);
-	const [busqueda, setBusqueda] = useState('');
-	const [isLoader, setIsLoader] = useState(false);
-	const [error, setError] = useState('');
-	const [estadoModal1, cambiarEstadoModal1] = useState(false);
-	const [recetaModal, setRecetaModal] = useState(null);
+	const {
+		chat,
+		setChat,
+		bot,
+		setBot,
+		busquedaChat,
+		isLoader,
+		setIsLoader,
+		error,
+		setError,
+		estadoModal1,
+		cambiarEstadoModal1,
+		recetaModal,
+		setRecetaModal,
+		buscarReceta,
+		iniciarBusqueda,
+		openChat,
+		chatClose,
+	} = useContext(DataContext);
 	useEffect(() => {
 		setTimeout(() => {
 			setChat(true);
@@ -26,44 +40,6 @@ const Chatbot = () => {
 			setChat(false);
 		}, 100000);
 	}, []);
-	const openChat = () => {
-		setChat(!chat);
-		setBot(!bot);
-	};
-
-	const chatClose = () => {
-		setChat(false);
-		setBot(false);
-	};
-
-	const buscarReceta = (e) => {
-		setError('');
-		setBusqueda({ ...busqueda, [e.target.name]: e.target.value });
-	};
-	const iniciarBusqueda = async () => {
-		if (busqueda.receta.length <= 0 || busqueda.receta === '') return;
-		if (busqueda.receta.length < 6) {
-			setError('La receta es muy corta');
-			return;
-		}
-		setError('');
-		setIsLoader(true);
-
-		const { data } = await axios.post(
-			'http://localhost:3001/sendPrompt',
-			{
-				userPrompt: busqueda.receta,
-			}
-		);
-		setRecetaModal(data.content.replace('\n', '').replace('```', ''));
-		if (data) {
-			setTimeout(() => {
-				cambiarEstadoModal1(!estadoModal1);
-				setChat(false);
-				setBot(false);
-			}, 3100);
-		}
-	};
 
 	return (
 		<>
