@@ -125,7 +125,7 @@ export const Boton = styled.button`
 export const Contenido = styled.div`
 	display: flex;
 	flex-direction: column;
-	/* 	align-items: center; */
+	align-items: center;
 	h1 {
 		font-size: 42px;
 		font-weight: 700;
@@ -135,8 +135,10 @@ export const Contenido = styled.div`
 		font-size: 18px;
 		margin-bottom: 20px;
 	}
+
 	img {
 		width: 100%;
+		height: 380px;
 		vertical-align: top;
 		border-radius: 3px;
 	}

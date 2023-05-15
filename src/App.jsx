@@ -1,21 +1,19 @@
-import Layout from './components/ui/Layout';
-import Recetas from './components/Recetas';
 import { DataProvider } from './context/DataContext';
-import Hero from './components/ui/Hero';
-import Filtros from './components/ui/Filtros';
+import Layout from './components/ui/Layout';
+import { Route, Router, Switch } from 'wouter';
+import Home from './components/Home';
+import BlogPage from './pages/BlogPage';
 
 function App() {
 	return (
 		<DataProvider>
 			<Layout>
-				<Hero />
-				<div className='container'>
-					<Filtros />
-					<Recetas />
-				</div>
+				<Switch>
+					<Route path='/' component={Home} />
+					<Route path='/blog' component={BlogPage} />
+				</Switch>
 			</Layout>
 		</DataProvider>
 	);
 }
-
 export default App;

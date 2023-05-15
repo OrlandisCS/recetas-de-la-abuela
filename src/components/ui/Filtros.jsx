@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { categorias, dificultad, tiempo } from '../../env';
 import { DataContext } from '../../context/DataContext';
 
-const Filtros = () => {
+const Filtros = ({ placeholder }) => {
 	const {
 		buscarPorNombre,
 		searchName,
@@ -83,7 +83,7 @@ const Filtros = () => {
 				<div className='search'>
 					<input
 						type='search'
-						placeholder='Buscar una receta'
+						placeholder={placeholder}
 						name='searchName'
 						value={searchName}
 						onChange={buscarPorNombre}

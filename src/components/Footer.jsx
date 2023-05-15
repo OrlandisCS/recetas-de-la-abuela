@@ -1,9 +1,7 @@
 import { BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs';
-import Chatbot from './Chatbot';
 const Footer = () => {
 	return (
 		<>
-			<Chatbot />
 			<footer>
 				<div className='container'>
 					<div className='row'>

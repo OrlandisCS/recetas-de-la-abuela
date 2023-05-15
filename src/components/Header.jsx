@@ -1,6 +1,16 @@
 import Logo from '../assets/logo.png';
 import Cocina from '../assets/cocina.png';
-
+import { Link, useRoute } from 'wouter';
+const ActiveLink = (props) => {
+	const [isActive] = useRoute(props.href);
+	return (
+		<Link {...props}>
+			<a className={`home__link ${isActive ? 'active' : ''}`}>
+				{props.children}
+			</a>
+		</Link>
+	);
+};
 const Header = () => {
 	return (
 		<header>
@@ -8,19 +18,14 @@ const Header = () => {
 				<img src={Logo} alt='logo principal' />
 			</div>
 			<div className='logo__decription'>
+				<ActiveLink href='/'>Inicio</ActiveLink>
+				<ActiveLink href='/blog'>Blog</ActiveLink>
 				<img
 					src={Cocina}
 					alt='Chefsito'
 					className='otros__iconos'
 					loading='lazy'
 				/>
-				{/* <p>
-					Revive los sabores de antaño con nuestras recetas de la
-					abuela
-				</p>
-				<p>
-					Deleita tu paladar con lo mejor de la cocina tradicional.{' '}
-				</p> */}
 			</div>
 		</header>
 	);

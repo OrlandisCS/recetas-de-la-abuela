@@ -15,6 +15,15 @@ header {
 		}
 	}
 	.logo__decription {
+		display: flex;
+		align-items: center;
+		.home__link {
+			color: $white;
+			margin: 0 0.8rem;
+		}
+		.active {
+			color: #000;
+		}
 		p {
 			margin: 0;
 			padding: 0;

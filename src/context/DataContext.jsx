@@ -4,13 +4,26 @@ import axios from 'axios';
 export const DataContext = createContext();
 export const DataProvider = ({ children }) => {
 	const [recetas, setRecetas] = useState([]);
+	const [articulos, setArticulos] = useState([]);
 	const [busqueda, setBusqueda] = useState(null);
 	const getRecetas = async () => {
-		const { data } = await axios.get('http://localhost:3001/recetas');
+		const { data } = await axios.get(
+			!import.meta.env.PROD
+				? 'http://localhost:3000/recetas'
+				: 'https://recetariodelabuela.com/recetas'
+		);
 		setRecetas(data);
 	};
-
+	const getArticulos = async () => {
+		const { data } = await axios.get(
+			!import.meta.env.PROD
+				? 'http://localhost:3000/articulos'
+				: 'https://recetariodelabuela.com/recetas'
+		);
+		setArticulos(data);
+	};
 	useEffect(() => {
+		getArticulos();
 		getRecetas();
 	}, []);
 
@@ -25,6 +38,7 @@ export const DataProvider = ({ children }) => {
 	const [searchName, setSearchName] = useState('');
 	const [activeSearch, setActiveSearch] = useState(false);
 	const [recetasEncontradas, setRecetasEncontradas] = useState(null);
+	const [message, setMessage] = useState(null);
 	const [filtros, setFiltros] = useState({
 		Hornillos: false,
 		Horno: false,
@@ -54,7 +68,36 @@ export const DataProvider = ({ children }) => {
 		setError('');
 		setBusqueda({ ...busqueda, [e.target.name]: e.target.value });
 	};
-	const iniciarBusqueda = async () => {
+	const iniciarBusqueda = async (random) => {
+		if (random === 'random') {
+			setError('');
+			setIsLoader(true);
+			setMessage('Estoy buscando receta aleatoria para ti...');
+
+			const { data } = await axios.post(
+				!import.meta.env.PROD
+					? 'http://localhost:3000/sendPrompt'
+					: 'https://recetariodelabuela.com/sendPrompt',
+				{
+					userPrompt: random,
+				}
+			);
+			setMessage(data.mensaje);
+			setRecetaModal(data.data);
+			getRecetas();
+			/* console.log(dataContent); */
+
+			if (data) {
+				setTimeout(() => {
+					cambiarEstadoModal1(!estadoModal1);
+					chatClose();
+					setBusquedaChat('');
+					setBusqueda(null);
+					setIsLoader(false);
+					setMessage('');
+				}, 3100);
+			}
+		}
 		if (busqueda.receta.length <= 0 || busqueda.receta === '') return;
 		if (busqueda.receta.length < 4) {
 			setError('La receta es muy corta');
@@ -64,16 +107,21 @@ export const DataProvider = ({ children }) => {
 		setIsLoader(true);
 
 		const { data } = await axios.post(
-			'http://localhost:3001/sendPrompt',
+			!import.meta.env.PROD
+				? 'http://localhost:3000/sendPrompt'
+				: 'https://recetariodelabuela.com/sendPrompt',
 			{
 				userPrompt: busqueda.receta,
 			}
 		);
-		const dataContent = data.content
-			.replace('\n', '')
-			.replace('```', '');
-		setRecetaModal(dataContent);
+		/* const dataContent = data.content
+			?.replace('\n', '')
+			?.replace('```', ''); */
+		setRecetaModal(data.data);
+		setMessage(data.mensaje);
 		getRecetas();
+		/* console.log(dataContent); */
+
 		if (data) {
 			setTimeout(() => {
 				cambiarEstadoModal1(!estadoModal1);
@@ -142,6 +190,10 @@ export const DataProvider = ({ children }) => {
 				recetasEncontradas,
 				aplicarFiltro,
 				handleCheckbox,
+				message,
+				setMessage,
+				articulos,
+				setArticulos,
 			}}
 		>
 			{children}

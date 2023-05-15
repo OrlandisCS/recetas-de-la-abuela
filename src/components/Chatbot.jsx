@@ -31,6 +31,7 @@ const Chatbot = () => {
 		iniciarBusqueda,
 		openChat,
 		chatClose,
+		message,
 	} = useContext(DataContext);
 	useEffect(() => {
 		setTimeout(() => {
@@ -44,10 +45,9 @@ const Chatbot = () => {
 	return (
 		<>
 			<div
-				className='container__float__chat'
-				style={{
-					right: chat && !bot ? '2.2rem' : '-100%',
-				}}
+				className={`container__float__chat ${
+					chat && !bot ? 'is_active_chat' : ''
+				}`}
 			>
 				<div className='btnClose'>
 					<button onClick={chatClose}>
@@ -63,9 +63,11 @@ const Chatbot = () => {
 			</div>
 
 			<div
-				className='container__for__chat'
+				className={`container__for__chat ${
+					bot ? 'is_active_chat' : ''
+				}`}
 				style={{
-					right: bot ? '2.2rem' : '-100%',
+					/* right: bot ? '2.2rem' : '-150%', */
 					display: isLoader ? 'flex' : '',
 					justifyContent: isLoader ? 'center' : '',
 					alignItems: isLoader ? 'center' : '',
@@ -92,19 +94,26 @@ const Chatbot = () => {
 				) : (
 					''
 				)}
-
+				{!isLoader && (
+					<button
+						className='btn mt-3'
+						onClick={() => iniciarBusqueda('random')}
+					>
+						Quiero una receta aleatoria
+					</button>
+				)}
 				<div className='loader__div'>
 					{isLoader ? (
 						<>
 							{recetaModal ? (
 								<div className='listo'>
 									<img src={Usuario} alt='' loading='lazy' />
-									<p>He encontrado una receta para ti</p>
+									<p>{message}</p>
 								</div>
 							) : (
 								<div className='pensando'>
 									<img src={Load} alt='' loading='lazy' />
-									<p>Estoy buscando la mejor receta para ti...</p>
+									<p>{message}</p>
 								</div>
 							)}
 						</>

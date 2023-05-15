@@ -1,4 +1,5 @@
-import Video from '../../assets/video.mp4';
+import { Fade } from 'react-awesome-reveal';
+import Video from '../../assets/chef.mp4';
 
 const Hero = () => {
 	return (

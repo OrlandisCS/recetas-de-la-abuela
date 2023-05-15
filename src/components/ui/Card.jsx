@@ -1,9 +1,7 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import styled from 'styled-components';
+import { useState } from 'react';
 import Modal, { Boton, Contenido } from './Modal';
-import { LoaderComponent } from './Loader';
 import ReactHtmlParser from 'react-html-parser';
+import { Bounce } from 'react-awesome-reveal';
 
 const Card = ({ nombre, descripcion, imagen, receta }) => {
 	const [estadoModal1, cambiarEstadoModal1] = useState(false);
@@ -20,6 +18,7 @@ const Card = ({ nombre, descripcion, imagen, receta }) => {
 	const htmlConvert = recetaModal
 		.replace('\n', '')
 		.replace('```', '');
+
 	return (
 		<>
 			<Modal
@@ -34,7 +33,7 @@ const Card = ({ nombre, descripcion, imagen, receta }) => {
 				<Contenido>
 					<div className='card__image'>
 						<img src={imagen} alt={nombre} loading='lazy' />
-						<div className='flex items-center justify-evenly absolute width50'>
+						{/* 	<div className='flex items-center justify-evenly absolute width50'>
 							<p>Imagenes suministradas por: </p>
 							<a target='_blank' href='https://www.flickr.com/'>
 								Flickr
@@ -45,7 +44,7 @@ const Card = ({ nombre, descripcion, imagen, receta }) => {
 							<a target='_blank' href='https://pixabay.com/'>
 								Pixabay
 							</a>
-						</div>
+						</div> */}
 					</div>
 
 					<div className='receta__parser'>
@@ -57,7 +56,6 @@ const Card = ({ nombre, descripcion, imagen, receta }) => {
 					</Boton>
 				</Contenido>
 			</Modal>
-
 			<div className='card__cointainer'>
 				<div className='card__image'>
 					<img src={imagen} alt={nombre} loading='lazy' />
